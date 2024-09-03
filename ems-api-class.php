@@ -1,5 +1,4 @@
 <?php
-
 function walkUpReservation($roomId, $startTime, $duration) {
 	//include ...ems-api-class.php
 	$ems = new EMS();
