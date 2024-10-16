@@ -1,0 +1,228 @@
+{
+    "bookings": {
+        "10348221": {
+            "id": 10348221,
+            "eventName": "Tekken Tournament",
+            "eventTypeId": 3,
+            "eventTypeDisplayOnWeb": true,
+            "reserveStartTime": "2024-10-15T09:00:00-04:00",
+            "reserveEndTime": "2024-10-15T10:30:00-04:00",
+            "eventStartTime": "2024-10-15T09:00:00-04:00",
+            "eventEndTime": "2024-10-15T10:30:00-04:00",
+            "outlookPatternOriginalDateTime": null,
+            "tearDownMinutes": 0,
+            "setupMinutes": 0,
+            "setupTypeId": 2,
+            "setupCount": 1,
+            "actualAttendance": 0,
+            "reservation": {
+                "id": 463404,
+                "webUserId": 11325,
+                "templateId": 92,
+                "groupName": "Law: STAFF",
+                "groupDisplayOnWeb": true,
+                "contactName": "Branden M. Nicholson",
+                "vip": false,
+                "eventName": ""
+            },
+            "status": {
+                "id": 9,
+                "description": "Confirmed",
+                "statusType": "BookedSpace",
+                "displayOnWeb": true,
+                "allowBookingEdit": false,
+                "allowServiceEdit": false,
+                "allowBookingCancellation": false,
+                "commitInventory": false
+            },
+            "group": {
+                "id": 704,
+                "name": "Law: STAFF",
+                "emailAddress": ""
+            },
+            "room": {
+                "id": 715,
+                "code": "1312",
+                "description": "1312 Auditorium",
+                "requiresCheckIn": false,
+                "promptForBillingReference": false,
+                "displayOnWeb": true,
+                "imageId": 0,
+                "recordType": "RequestableRoom",
+                "roomType": {
+                    "id": 8,
+                    "description": "Auditorium",
+                    "sequence": 0
+                },
+                "floor": {
+                    "id": 2,
+                    "description": "First",
+                    "sequence": 4
+                },
+                "building": {
+                    "id": 11,
+                    "description": "Worrell Professional Center",
+                    "code": "WOPC",
+                    "longitude": 0,
+                    "latitude": 0,
+                    "timezoneId": 61,
+                    "timeZone": {
+                        "id": 61,
+                        "name": "Eastern Time",
+                        "abbreviation": "ET",
+                        "description": "Eastern Standard Time",
+                        "gmtDescription": "(GMT -05:00)",
+                        "hourOffset": -5,
+                        "minuteOffset": -300,
+                        "timestamp": null
+                    },
+                    "notes": "",
+                    "url": null,
+                    "currency": null,
+                    "calendaringTBDRoom": null
+                },
+                "defaultSetupTypeId": 2,
+                "defaultCapacity": 200,
+                "isAssociatedRoom": false,
+                "hideGroup": false
+            },
+            "videoConference": false,
+            "isHost": false,
+            "pamId": "",
+            "calendarUID": "",
+            "conferenceProvider": "",
+            "conferenceCode": null,
+            "conferenceURL": null,
+            "conferenceHostURL": null,
+            "canEdit": false,
+            "canEndNow": false,
+            "canCancel": false,
+            "checkedIn": false,
+            "canCheckIn": false,
+            "conflictResolutionGroup": null,
+            "overrideDescription": "",
+            "changeCounter": 1,
+            "hasServiceOrders": false,
+            "audit": {
+                "addedBy": "Nicholson, Branden",
+                "dateAdded": "2023-11-29T19:06:13.443Z",
+                "changedBy": "Paula Willis",
+                "dateChanged": "2023-11-30T04:39:28.45Z"
+            },
+            "maxOccupancy": null,
+            "avgOccupancy": null
+        },
+        "11007539": {
+            "id": 11007539,
+            "eventName": "All-Staff Meeting with Dean Klein",
+            "eventTypeId": 3,
+            "eventTypeDisplayOnWeb": true,
+            "reserveStartTime": "2024-10-16T09:00:00-04:00",
+            "reserveEndTime": "2024-10-16T10:30:00-04:00",
+            "eventStartTime": "2024-10-16T09:00:00-04:00",
+            "eventEndTime": "2024-10-16T10:30:00-04:00",
+            "outlookPatternOriginalDateTime": null,
+            "tearDownMinutes": 0,
+            "setupMinutes": 0,
+            "setupTypeId": 2,
+            "setupCount": 1,
+            "actualAttendance": 0,
+            "reservation": {
+                "id": 499129,
+                "webUserId": 2403,
+                "templateId": 94,
+                "groupName": "Law: Administration",
+                "groupDisplayOnWeb": true,
+                "contactName": "Iris Still",
+                "vip": false,
+                "eventName": ""
+            },
+            "status": {
+                "id": 9,
+                "description": "Confirmed",
+                "statusType": "BookedSpace",
+                "displayOnWeb": true,
+                "allowBookingEdit": false,
+                "allowServiceEdit": false,
+                "allowBookingCancellation": false,
+                "commitInventory": false
+            },
+            "group": {
+                "id": 700,
+                "name": "Law: Administration",
+                "emailAddress": ""
+            },
+            "room": {
+                "id": 715,
+                "code": "1312",
+                "description": "1312 Auditorium",
+                "requiresCheckIn": false,
+                "promptForBillingReference": false,
+                "displayOnWeb": true,
+                "imageId": 0,
+                "recordType": "RequestableRoom",
+                "roomType": {
+                    "id": 8,
+                    "description": "Auditorium",
+                    "sequence": 0
+                },
+                "floor": {
+                    "id": 2,
+                    "description": "First",
+                    "sequence": 4
+                },
+                "building": {
+                    "id": 11,
+                    "description": "Worrell Professional Center",
+                    "code": "WOPC",
+                    "longitude": 0,
+                    "latitude": 0,
+                    "timezoneId": 61,
+                    "timeZone": {
+                        "id": 61,
+                        "name": "Eastern Time",
+                        "abbreviation": "ET",
+                        "description": "Eastern Standard Time",
+                        "gmtDescription": "(GMT -05:00)",
+                        "hourOffset": -5,
+                        "minuteOffset": -300,
+                        "timestamp": null
+                    },
+                    "notes": "",
+                    "url": null,
+                    "currency": null,
+                    "calendaringTBDRoom": null
+                },
+                "defaultSetupTypeId": 2,
+                "defaultCapacity": 200,
+                "isAssociatedRoom": false,
+                "hideGroup": false
+            },
+            "videoConference": false,
+            "isHost": false,
+            "pamId": "",
+            "calendarUID": "",
+            "conferenceProvider": "",
+            "conferenceCode": null,
+            "conferenceURL": null,
+            "conferenceHostURL": null,
+            "canEdit": true,
+            "canEndNow": false,
+            "canCancel": true,
+            "checkedIn": false,
+            "canCheckIn": false,
+            "conflictResolutionGroup": null,
+            "overrideDescription": "",
+            "changeCounter": 1,
+            "hasServiceOrders": true,
+            "audit": {
+                "addedBy": "Still, Iris M.",
+                "dateAdded": "2024-06-18T14:06:08.407Z",
+                "changedBy": "Paula Willis",
+                "dateChanged": "2024-06-19T06:48:14.87Z"
+            },
+            "maxOccupancy": null,
+            "avgOccupancy": null
+        }
+    }
+}

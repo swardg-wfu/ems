@@ -1,0 +1,116 @@
+{
+    "bookings": {
+        "10864841": {
+            "id": 10864841,
+            "eventName": "JLP Symposium",
+            "eventTypeId": 0,
+            "eventTypeDisplayOnWeb": true,
+            "reserveStartTime": "2024-10-25T09:00:00-04:00",
+            "reserveEndTime": "2024-10-25T17:00:00-04:00",
+            "eventStartTime": "2024-10-25T09:00:00-04:00",
+            "eventEndTime": "2024-10-25T17:00:00-04:00",
+            "outlookPatternOriginalDateTime": null,
+            "tearDownMinutes": 0,
+            "setupMinutes": 0,
+            "setupTypeId": 11,
+            "setupCount": 200,
+            "actualAttendance": 0,
+            "reservation": {
+                "id": 487102,
+                "webUserId": 0,
+                "templateId": 0,
+                "groupName": "Law: STAFF",
+                "groupDisplayOnWeb": true,
+                "contactName": "Paula Willis",
+                "vip": false,
+                "eventName": ""
+            },
+            "status": {
+                "id": 9,
+                "description": "Confirmed",
+                "statusType": "BookedSpace",
+                "displayOnWeb": true,
+                "allowBookingEdit": false,
+                "allowServiceEdit": false,
+                "allowBookingCancellation": false,
+                "commitInventory": false
+            },
+            "group": {
+                "id": 704,
+                "name": "Law: STAFF",
+                "emailAddress": ""
+            },
+            "room": {
+                "id": 715,
+                "code": "1312",
+                "description": "1312 Auditorium",
+                "requiresCheckIn": false,
+                "promptForBillingReference": false,
+                "displayOnWeb": true,
+                "imageId": 0,
+                "recordType": "NotSet",
+                "roomType": {
+                    "id": 8,
+                    "description": "Auditorium",
+                    "sequence": 0
+                },
+                "floor": {
+                    "id": 2,
+                    "description": "First",
+                    "sequence": 4
+                },
+                "building": {
+                    "id": 11,
+                    "description": "Worrell Professional Center",
+                    "code": "WOPC",
+                    "longitude": 0,
+                    "latitude": 0,
+                    "timezoneId": 61,
+                    "timeZone": {
+                        "id": 61,
+                        "name": "Eastern Time",
+                        "abbreviation": "ET",
+                        "description": "Eastern Standard Time",
+                        "gmtDescription": "(GMT -05:00)",
+                        "hourOffset": -5,
+                        "minuteOffset": -300,
+                        "timestamp": null
+                    },
+                    "notes": "",
+                    "url": null,
+                    "currency": null,
+                    "calendaringTBDRoom": null
+                },
+                "defaultSetupTypeId": 2,
+                "defaultCapacity": 200,
+                "isAssociatedRoom": false,
+                "hideGroup": false
+            },
+            "videoConference": false,
+            "isHost": false,
+            "pamId": "",
+            "calendarUID": "",
+            "conferenceProvider": "",
+            "conferenceCode": null,
+            "conferenceURL": null,
+            "conferenceHostURL": null,
+            "canEdit": false,
+            "canEndNow": false,
+            "canCancel": false,
+            "checkedIn": false,
+            "canCheckIn": false,
+            "conflictResolutionGroup": null,
+            "overrideDescription": null,
+            "changeCounter": 0,
+            "hasServiceOrders": false,
+            "audit": {
+                "addedBy": "Paula Willis",
+                "dateAdded": "2024-03-28T15:55:43.06Z",
+                "changedBy": "Paula Willis",
+                "dateChanged": "2024-03-28T15:55:43.06Z"
+            },
+            "maxOccupancy": null,
+            "avgOccupancy": null
+        }
+    }
+}

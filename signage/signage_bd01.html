@@ -1,0 +1,1759 @@
+
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Bulletin Board | Wake Forest School of Law</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.3.1/dist/css/foundation-flex.css" media="print,screen" />
+	
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.3.1/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/09da85684c.js" crossorigin="anonymous"></script>
+
+	<style>
+		body{
+			background-color: #000000;
+		}
+		.container{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		.hidden{
+			display: none;
+		}
+		
+		
+		#wakealerts {
+			z-index: 10; /* put wakealerts above slides and base layer */
+		}
+		#wakealerts .alert{
+			background-color: #c0c0c0;
+			color: #2a2a2a;
+			height: 100%;
+			font-weight: bold;
+			padding: 6rem 5rem 6rem;
+		}
+		#wakealerts .alert .row{
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		#wakealerts .row{
+			height: 100%;
+		}
+		
+		#wakealerts .alert svg .cls-1{
+			fill: #2a2a2a;
+		}
+		#wakealerts .alert h1{
+			margin: 4rem 0; 
+			font-size: 4rem; 
+			font-weight: normal; 
+			font-family: sans-serif;
+		}
+		#wakealerts .alert.red{
+			background-color: #990000;
+			color: #fff;
+		}
+		#wakealerts .alert.orange{
+			background-color: orange;
+		}
+		#wakealerts .alert.yellow{
+			background-color: #ffe066;
+		}
+		#wakealerts .alert.blue{
+			background-color: #74c0fc;
+		}
+		#wakealerts .alert.green{
+			background-color: #d0deb2;
+		}
+		#wakealerts .alert.red{
+			background-color: #990000;
+			color: #fff;
+		}
+		#wakealerts .alert.red svg .cls-1{
+			fill: #fff;
+		}
+
+		
+		
+		#image img,
+		#exams img{
+			width: 100%;
+		}
+		
+
+		#google-slides {
+			z-index: 2;
+			padding-bottom: 56.25%; /* 16:9 Ratio, (9/16)*100% = 56.25% */
+			height: 0;
+		}
+		#google-slides iframe {
+			position: absolute;
+			border: 0;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		
+		
+		#exams video#bgvid { 
+		    position: fixed;
+		    top: 50%;
+		    left: 50%;
+		    min-width: 100%;
+		    min-height: 100%;
+		    width: auto;
+		    height: auto;
+		    z-index: -100;
+		    -ms-transform: translateX(-50%) translateY(-50%);
+		    -moz-transform: translateX(-50%) translateY(-50%);
+		    -webkit-transform: translateX(-50%) translateY(-50%);
+		    transform: translateX(-50%) translateY(-50%);
+		    background: url(polina.jpg) no-repeat;
+		    background-size: cover; 
+		}
+		#exams img {
+		    position: fixed;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    max-width: 100%;
+		    max-height: 100%;
+		    margin: auto;
+		    overflow: auto;
+		}
+		
+		#directory{
+			color: #fefefe;
+		}
+		#directory #sidebar > .row,
+		#directory #body{
+			height: 100vh;
+		}
+		#directory #body{
+			width: 100%;
+			background-color: #fff;
+		}
+		#directory #controls{
+			padding-top: 2rem;
+			background-color: #fff;
+			color: #000;
+			width: 100%;
+		}
+		#directory .logo-container{
+			
+		}
+		#directory #body h2{
+			font-size: 2rem;
+		}
+		#directory .directions-container{
+			background-color: #000;
+			padding-bottom: 2rem;
+		}
+		#directory .directions{
+			font-size: 2.2rem;
+		}
+		#directory .directions.common{
+			margin-top: 1.5rem;
+		}
+		#directory #events{
+			background-color: #e5e0d9;
+			color: #000;
+		}
+		#directory #departments,
+		#directory #employees{
+			display:none;
+		}
+		#directory #events .outer-container{
+/* 			overflow: hidden; */
+		}
+		#directory #events .inner-container {
+			height: calc(100vh - 300px);
+
+			display: flex;
+			flex-flow: column wrap;
+			column-gap: 10rem;
+			
+			overflow: hidden;
+			justify-content: start;
+  		}
+		
+		#directory #events .inner-container .event{
+			flex: 1 1 1px;
+		}
+		
+		#directory #events .event-heading{
+			width: 100%; 
+			text-align: left; 
+			border-bottom: 2px solid #000; 
+			line-height: 2rem; 
+			margin: 1rem 0 1.5rem;
+		}
+		#directory #events .event-heading:first-child{
+			margin-top: 3rem;
+		}
+		#directory #events .time{
+			font-weight: bold; 
+		}
+		#directory #events .description{
+			font-size: 1.375rem;
+			line-height: 1.125; 
+		}
+		#directory #departments #controls > .columns,
+		#directory #employees #controls > .columns{
+			margin-top: 6rem;
+		}
+		
+		#directory #departments,
+		#directory #employees{
+			background-color: #fff;
+		}
+		#directory #departments #body_content,
+		#directory #employees #body_content{
+			background-color: #fff;
+			overflow: scroll;
+			height: calc(100vh - 300px);
+			padding-bottom: 4rem;
+		}
+		#directory #departments .header,
+		#directory #employees .header{
+			background-color: #9e7e38;
+			color: #fefefe;
+		}
+		#directory #departments .header h2,
+		#directory #employees .header h2{
+			padding: 1rem;
+		}
+		#directory #departments #controls .button,
+		#directory #employees #controls .button{
+			margin-left: 0;
+		}
+		
+		#directory #departments .department,
+		#directory #employees .employee{
+			border-bottom: 1px solid #e5e0d9;
+			color: #000;
+		}
+		#directory #departments .department:last-child,
+		#directory #employees .employee:last-child{
+			border-bottom: 0;
+		}
+		
+		#directory #departments .department .columns,
+		#directory #employees .employee .columns{
+			line-height: 1.125; 
+			margin-top: 1.75rem; 
+			margin-bottom: 1.75rem;
+			font-size: 2.3rem; 
+		}
+		#directory #departments #controls,
+		#directory #employees #controls{
+			background: linear-gradient(transparent, white 45%);
+		}
+		
+		
+		
+		#directory.vertical #events .inner-container {
+			height: calc(100vh - 1075px);
+		}
+		#directory.vertical #departments #body_content,
+		#directory.vertical #employees #body_content{
+			height: calc(100vh - 575px);
+		}
+		
+		#directory #employees .employee .columns{
+			margin-top: 1.5rem;
+			margin-bottom: 1.25rem;
+		}
+		#directory #employees .employee span{
+			font-size: 1rem;
+			color: #666;
+			position: relative;
+			top: -1rem;
+		}		
+		
+		
+		
+		
+		
+		
+		
+		#directory .button {
+			display: inline-block;
+			text-align: center;
+			line-height: 1;
+			cursor: pointer;
+			-webkit-appearance: none;
+			transition: background-color 0.25s ease-out, color 0.25s ease-out;
+			vertical-align: middle;
+			border: 1px solid transparent;
+			border-radius: 0px;
+			padding: 0.85em 1em;
+			margin: 1rem 2.5rem 2rem 2.5rem;
+			font-size: 0.9rem;
+			background-color: #9e7e38;
+			color: #fefefe;
+		}
+		
+		#directory .button:hover, #directory .button:focus {
+			background-color: #866b30;
+			color: #fefefe;
+		}
+		#directory .huge {
+			font-size: 2.5rem;
+			padding: 2rem 3rem;
+		}
+		
+		
+		/* 4K content */
+		@media screen and (min-width: 3840px) {
+			#directory #body h2{
+				font-size: 4rem;
+			}
+			#wakealerts .alert{
+				padding: 12rem 10rem 12rem;
+			}
+		   
+			#wakealerts .alert h1{
+				margin: 8rem 0; 
+				font-size: 8rem; 
+			}
+			
+			#directory .directions{
+				font-size: 4.4rem;
+				padding-top: 2rem;
+				padding-bottom: 2rem;
+			}
+			#directory .directions{
+				font-size: 4.4rem;
+			}
+			
+			#directory #events .event-heading{
+				line-height: 1.125; 
+				margin: 2rem 0 3rem;
+				border-bottom-width: 4px;
+			}
+			#directory #events .event-heading h1{
+				font-size: 6rem;
+			}
+			#directory #events .event-heading:first-child{
+				margin-top: 3rem;
+			}
+			#directory #events .description{
+				font-size: 2.75rem;
+			}
+			#directory #departments .department .columns,
+			#directory #employees .employee .columns {
+				font-size: 3.5rem;
+				margin-top: 2rem;
+				margin-bottom: 2rem;
+			}
+			#directory #employees .employee .columns {
+				margin-bottom: 1.5rem;
+			}
+			#directory #employees .employee span {
+				font-size: 2.5rem;
+				top: -1rem;
+			}
+			#directory .huge {
+				font-size: 3.5rem;
+				padding: 2rem 3rem;
+			}
+			#directory #events .inner-container {
+				height: calc(100vh - 300px);
+			}
+			.touch-notice{
+				color: darkgray; 
+				font-size: 3rem;
+				padding-bottom: 1rem;
+			}
+	</style>
+	<script>
+		$(document).ready(function() {
+			$(document).foundation();
+			
+			$('#wakealerts').load('/building/wakealert.php', function(response, status, xhr){
+				if ( status != "error" ) {
+					if(response != ''){
+						$('#wakealerts').removeClass('hidden');
+					}
+				}
+			});
+	
+			setInterval(function() {
+				$('#wakealerts').load('/building/wakealert.php?randval='+ Math.random(), function(response, status, xhr){
+					if ( status != "error" ) {
+						if(response == ''){
+							$('#wakealerts').addClass('hidden');
+						}else{
+							$('#wakealerts').removeClass('hidden');
+						}
+					}
+				});
+			}, 20000);
+		});
+	</script>
+</head>
+<body>
+	<div id="wakealerts" class='container hidden'></div>
+	<div id='directory' class='container vertical'>		<script>
+			$(document).ready(function() {
+				$(".button").on( "click", function(event) {
+					event.preventDefault();
+					
+					if($(this).hasClass('departments')){
+						$('#today').hide();
+						$('#departments').show();
+						$('#employees').hide();
+					}else if($(this).hasClass('employees')){
+						$('#today').hide();
+						$('#departments').hide();
+						$('#employees').show();
+					}else {
+						$('#today').show();
+						$('#departments').hide();
+						$('#employees').hide();
+					}
+					
+					$('.sticky').foundation('_calc', true);					
+				});
+			});
+		</script>
+		<div class="row expanded collapse">
+			<div class="columns small-12">
+				<div class="row">
+					<div class="columns small-12 text-center">
+						<img src="/building/directory/img/lawlogo1080x608.png" width="600" />
+					</div>
+				</div>
+			</div>
+			
+			<div id='body' class="columns">
+				<div id='today' data-sticky-container>
+					<div class='row expanded directions-container align-center'>
+						<div class='columns small-11'>
+		<!-- WEST -->
+		<div class="row align-center directions">
+			<div class="columns small-1 text-right">
+				<div><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+			</div>
+			<div class="columns">
+				<div>Admissions</div>
+				<div>Auditorium 1312</div>
+				<div>Classrooms 1101 - 1109</div>
+				<div>Classrooms 1301 - 3221</div>
+				<div>Courtrooms 2323 - 2324</div>
+				<div>Courtroom 3205</div>
+			</div>
+			<div class="columns small-1 text-right">
+				<div><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+			</div>
+			<div class="columns">
+				<div>Dean's Suite</div>
+				<div>Faculty Offices</div>
+				<div>Law Commons</div>
+				<div>Elder Law Clinic</div>
+				<div>NC Business Court</div>
+				<div>Law Library</div>
+			</div>
+		</div>
+		<div class="row align-center directions common">
+			<div class="columns small-1 text-right">
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+			</div>
+			<div class="columns end">
+				<div>Elevators</div>
+			</div>
+			<div class="columns small-1 text-right">
+				<div><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+			</div>
+			<div class="columns">
+				<div>Restrooms</div>
+			</div>
+		</div>
+						</div>
+					</div>
+					<div id='body_content' class="row expanded collapse">
+						<div id="events" class='columns'>
+			<div class='row expanded align-center'>
+			<div class='column small-11 inner-container'>
+
+<!-- Today's Featured Events -->
+
+						<div class='event-heading'>
+
+							<div class='row'>
+								<div class='small-12 columns'>
+									<h1>Today's Events</h1>
+								</div>
+							</div>
+						</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>12:00 PM</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>DVAC School Supply & Toiletry Drive</h2>
+
+								<p class='description'>Law Commons</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<!-- Upcoming Featured Events -->
+
+						<div class='event-heading'>
+
+							<div class='row'>
+								<div class='small-12 columns'>
+									<h1>Upcoming Events</h1>
+								</div>
+							</div>
+						</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 17</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Fall Break</h2>
+
+								<p class='description'>No classes<br />Continues through October 18.</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 17</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>DVAC School Supply & Toiletry Drive</h2>
+
+								<p class='description'>Law Commons</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 17</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Christian Legal Society's Weekly Bible Study</h2>
+
+								<p class='description'>Classroom 1306</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 18</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>DVAC School Supply & Toiletry Drive</h2>
+
+								<p class='description'>Law Commons</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 18</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Board Games - Everyone Welcome!</h2>
+
+								<p class='description'>Classroom 1106</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 21</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>DVAC School Supply & Toiletry Drive</h2>
+
+								<p class='description'>Law Commons</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 21</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Meet the Firm Monday: Katten</h2>
+
+								<p class='description'>Law Commons</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 21</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Ace Your Finals: 1L Prep & Black Law Professor Appreciation</h2>
+
+								<p class='description'>Classroom 1109</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 21</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Public Interest Pathways Speaker Panel</h2>
+
+								<p class='description'>Classroom 1108</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 21</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Expungement's Roundtable</h2>
+
+								<p class='description'>Classroom 1101</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 22</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>DVAC School Supply & Toiletry Drive</h2>
+
+								<p class='description'>Law Commons</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 22</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>Intro to Clerkships with NCBA</h2>
+
+								<p class='description'>Classroom 1301</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<div class='event'>
+
+						<div class='row expanded'>
+
+							<div class='columns small-3 text-right'>
+
+								<h2 class='time'>October 23</h2>
+
+							</div>
+
+							<div class='columns'>
+
+								<h2>DVAC School Supply & Toiletry Drive</h2>
+
+								<p class='description'>Law Commons</p>
+
+							</div>
+
+						</div>
+
+					</div>
+<!-- End Featured Events Block -->
+
+			</div>
+		</div>
+						</div>
+					</div>
+					<div id="controls" class="row collapse text-center align-center sticky" data-sticky data-stick-to="bottom" data-margin-bottom="0">
+						<div class="columns small-10">
+							<h2>Building Directory</h2>
+							<a href="#" type="button" class="button huge departments" style="">Departments</a>
+							<a href="#" type="button" class="button huge employees" style="">Faculty & Staff</a>
+						</div>
+						<div class="columns small-11">
+							<p style="color: darkgray; font-size: xx-large;"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> Touch the screen to navigate</p>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div id='departments' data-sticky-container>
+					<div class="row collapse text-center sticky header" data-sticky data-stick-to="top" data-margin-top="0">
+						<div class="columns small-11">
+							<h2>Department Directory</h2>
+						</div>
+					</div>
+					
+					<div id='body_content' class="row expanded collapse align-center">
+						<div class='columns small-11'>
+	<div class='row expanded department'><div class='columns small-9'>Academic Affairs</div><div class='columns text-right'>Room 2100</div></div><div class='row expanded department'><div class='columns small-9'>Admissions and Financial Aid</div><div class='columns text-right'>Room 1204</div></div><div class='row expanded department'><div class='columns small-9'>Building Management and Events</div><div class='columns text-right'>Room 2102</div></div><div class='row expanded department'><div class='columns small-9'>Career and Professional Development</div><div class='columns text-right'>Room 1213</div></div><div class='row expanded department'><div class='columns small-9'>Dean</div><div class='columns text-right'>Room 2113</div></div><div class='row expanded department'><div class='columns small-9'>Development and Alumni Engagement</div><div class='columns text-right'>Alumni Hall</div></div><div class='row expanded department'><div class='columns small-9'>Experiential Education</div><div class='columns text-right'>Room 2303</div></div><div class='row expanded department'><div class='columns small-9'>Faculty Support Services</div><div class='columns text-right'>Room 3131</div></div><div class='row expanded department'><div class='columns small-9'>Finance and Administration</div><div class='columns text-right'>Room 2101</div></div><div class='row expanded department'><div class='columns small-9'>Health and Exercise Science</div><div class='columns text-right'>Room 1150</div></div><div class='row expanded department'><div class='columns small-9'>Information Technology</div><div class='columns text-right'>Room 2207</div></div><div class='row expanded department'><div class='columns small-9'>Law Library</div><div class='columns text-right'>Room 2207</div></div><div class='row expanded department'><div class='columns small-9'>Marketing and Communications</div><div class='columns text-right'>Room 2105</div></div><div class='row expanded department'><div class='columns small-9'>North Carolina Business Court</div><div class='columns text-right'>Room 3206</div></div><div class='row expanded department'><div class='columns small-9'>Program for Leadership and Character</div><div class='columns text-right'>Room 3123</div></div><div class='row expanded department'><div class='columns small-9'>Registrar</div><div class='columns text-right'>Room 2122</div></div><div class='row expanded department'><div class='columns small-9'>Sabin Center for Environment and Sustainability</div><div class='columns text-right'>Room 3100</div></div><div class='row expanded department'><div class='columns small-9'>Student Affairs</div><div class='columns text-right'>Room 2325</div></div><div class='row expanded department'><div class='columns small-9'>University Legal</div><div class='columns text-right'>Room 3100</div></div>						</div>
+					</div>
+					
+					<div id="controls" class="row collapse align-center sticky" data-sticky data-stick-to="bottom" data-margin-bottom="0">
+						<div class="columns small-11">
+							<a href="#" type="button" class="button huge today"><span class="fa fa-chevron-left" aria-hidden="true"></span>&nbsp;&nbsp;Home</a>
+						</div>
+					</div>
+				</div>
+				
+				<div id='employees' data-sticky-container>
+					<div class="row collapse text-center sticky header" data-sticky data-stick-to="top" data-margin-top="0">
+						<div class="columns small-11">
+							<h2>Faculty and Staff Directory</h2>
+						</div>
+					</div>
+					
+					<div id='body_content' class="row expanded collapse align-center">
+						<div class='columns small-11'>
+					<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Enrique Armijo<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3314					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Alyse Bertenthal<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3333					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Meghan Boone<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3330					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Nancy Boyce<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1204A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Malcolm Boyd<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2302D					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Gracen Brown<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1204					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Lance Burke<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207D					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Margaret Shea Burnham<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3303					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Rodney Canada<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1221					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Jonathan Cardi<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3125					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						John Carter<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3309					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Sonya Casstevens<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2303					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Amy Cecil<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2122A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Christine Coughlin<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3306					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Brittany Crimmins<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1213E					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Isbel Cruz-Chaudhry<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2210J					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Timothy Davis<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3137					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Evan Didier<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1204E					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Tara Ebrahimi<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2105					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Jennifer Elliott<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 3345					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Juztine Evangelista<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207M					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Nathan Fleming<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3343					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Corey Frost<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2325B					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Trey Frye<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2108					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Cindy Gentry<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2101					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Marie-Amélie George<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3331					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Brenda Gibson<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3305					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Shannon Gilreath<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3324					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Allyson E. Gold<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2303A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Laura Graham<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3129					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Heather Gram<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3135					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Sue Grebeldinger<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3312					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Michael Greene<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2210E					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Elenora Haag<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1204B					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Mark Hall<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3335					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Raina Haque<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3313					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Christi Hardwick<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2119					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Denise Hartsfield<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2325B					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Alice Hernandez<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2101					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Trevor Hughes<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207P					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Sally Irvin<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207E					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Kate Irwin-Smiler<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207G					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Gina Jarrett<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2210G					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Liz Johnson<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2121					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Andrew R. Klein<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2116A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Christopher Knott<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207J					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						John H. Knox<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3132					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						John Korzen<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2303D					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Adam Landreth<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2123					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Bronwyn Lane<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 3340					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Margaret Lankford<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2101A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Andrea LeRoy<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1213					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Jordan Lee<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1213D					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Matt Lewis<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1213F					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Harold Anthony Lloyd<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3134					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Wayne Logan<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3338					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Miles Malbrough<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2301B					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Tanya Marsh<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2115 and 3302					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Chris Martin<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2125					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Chris Meazell<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3136					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Gil Middlebrooks<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3314					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Eleanor Morales<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2303C					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Sarah J. Morath<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3334					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Rebecca Morrow<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3130					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Ellen Murphy<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3347					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Matt Nelkin<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207Q					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Branden Nicholson<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2325C					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Steve Nickles<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3301					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Jennifer Noga<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2210H					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Jasmine Orsini<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2325					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Alan Palmiter<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3133					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Samir Parikh<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3127					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Marlena Parker<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 3340					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Wendy Parker<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3303					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Wilson Parker<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3128					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Gregory Parks<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3346					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Abigail Perdue<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3337					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Jasmine Plott<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207C					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Rebecca Poore<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 3131					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Eileen Prescott<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 3332					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Mark Rabil<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2302A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Ben Rigney<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2325A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Keith Robinson<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2107					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Michael Robinson<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3206					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Zaneta Robinson<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2303E					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Simone Rose<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3126					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Catherine Sapp<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1213A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Audra Savage<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3341					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Scott Schang<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 2303B					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Dick Schneider<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3310					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Trey Schuyler<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207N					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Frances Scott<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1213G					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Sidney Shapiro<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3325					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Sydney Smith<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2302					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Karen Sokol<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1204C					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Iris Still<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2113					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Garrett Sward<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207H					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Holly Swenson<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2106					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Margaret Taylor<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3308					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Sarah Taylor<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1213B					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Emily Thornton<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2302B					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Kenneth Townsend<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3122					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Steve Virgil<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3307					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Leslie Wakeford<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2210C					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Matthew Wedge<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2207F					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Melody Weigel<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 1204F					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Paula Willis<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2102					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Nancy Winfrey<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 3123					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Ronald Wright<br />
+						<span>Faculty</span>
+					</div>
+					<div class="columns text-right">
+						Room 3336					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Wendi Zongker<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2122A					</div>
+				</div>
+				<div class="row expanded employee align-middle">
+					<div class="columns small-7">
+						Victoria von Dohlen<br />
+						<span>Staff</span>
+					</div>
+					<div class="columns text-right">
+						Room 2104					</div>
+				</div>
+						</div>
+					</div>
+					
+					<div id="controls" class="row collapse align-center sticky" data-sticky data-stick-to="bottom" data-margin-bottom="0">
+						<div class="columns small-11">
+							<a href="#" type="button" class="button huge today"><span class="fa fa-chevron-left" aria-hidden="true"></span>&nbsp;&nbsp;Home</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div></body>
+</html>
